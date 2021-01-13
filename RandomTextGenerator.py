@@ -4,13 +4,14 @@ import pyautogui
 import time
 import random
 
-alphabet = []
 
 # Fills the alphabet list with letters and space, based on the frequency of those characters in Portuguese
 # Frequency from https://www.gta.ufrj.br/grad/06_2/alexandre/criptoanalise.html#:~:text=O%20comprimento%20m%C3%A9dio%20das%20palavras,10%20letras%20%C3%A9%20de%204.88
 
 
-def set_up():
+def set_up_portuguese_alphabet():
+    alphabet = []
+
     a = ['a'] * 1463
     alphabet.extend(a)
 
@@ -94,9 +95,105 @@ def set_up():
 
     random.shuffle(alphabet)
 
+    return alphabet
+
+
+# Fills the alphabet list with letters and space, based on the frequency of those characters in English
+# Frequency from https://en.wikipedia.org/wiki/Letter_frequency
+
+
+def set_up_english_alphabet():
+    alphabet = []
+
+    a = ['a'] * 820
+    alphabet.extend(a)
+
+    b = ['b'] * 150
+    alphabet.extend(b)
+
+    c = ['c'] * 280
+    alphabet.extend(c)
+
+    d = ['d'] * 430
+    alphabet.extend(d)
+
+    e = ['e'] * 1300
+    alphabet.extend(e)
+
+    f = ['f'] * 220
+    alphabet.extend(f)
+
+    g = ['g'] * 200
+    alphabet.extend(g)
+
+    h = ['h'] * 610
+    alphabet.extend(h)
+
+    i = ['i'] * 700
+    alphabet.extend(i)
+
+    j = ['j'] * 15
+    alphabet.extend(j)
+
+    k = ['k'] * 77
+    alphabet.extend(k)
+
+    l = ['l'] * 400
+    alphabet.extend(l)
+
+    m = ['m'] * 240
+    alphabet.extend(m)
+
+    n = ['n'] * 670
+    alphabet.extend(n)
+
+    o = ['o'] * 750
+    alphabet.extend(o)
+
+    p = ['p'] * 190
+    alphabet.extend(p)
+
+    q = ['q'] * 9
+    alphabet.extend(q)
+
+    r = ['r'] * 600
+    alphabet.extend(r)
+
+    s = ['s'] * 630
+    alphabet.extend(s)
+
+    t = ['t'] * 910
+    alphabet.extend(t)
+
+    u = ['u'] * 280
+    alphabet.extend(u)
+
+    v = ['v'] * 98
+    alphabet.extend(v)
+
+    w = ['w'] * 240
+    alphabet.extend(w)
+
+    x = ['x'] * 15
+    alphabet.extend(x)
+
+    y = ['y'] * 200
+    alphabet.extend(y)
+
+    z = ['z'] * 7
+    alphabet.extend(z)
+
+    space = [' '] * 3000
+    alphabet.extend(space)
+
+    random.shuffle(alphabet)
+
+    return alphabet
+
 
 def main():
-    set_up()
+    portuguese = set_up_portuguese_alphabet()
+    english = set_up_english_alphabet()
 
     # How many characters will be pressed
     text_length = 1000
@@ -106,7 +203,9 @@ def main():
 
     previous = ""
     for i in range(text_length):
-        letter = random.choice(alphabet)
+
+        # Choose alphabet
+        letter = random.choice(portuguese)
 
         # Avoids double Spaces
         if previous != " " or letter != " ":
